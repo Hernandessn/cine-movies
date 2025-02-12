@@ -6,7 +6,7 @@ export function Header(){
     return(
         <>
         <div>
-            <img src={Logo} alt="Logo Dev Movies" />
+            <img src={Logo} width={190} alt="Logo Dev Movies" />
         </div>
         
         
