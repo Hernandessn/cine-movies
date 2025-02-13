@@ -1,9 +1,13 @@
-import { MainButton } from "./styles";
+import { ButtonRed, ButtonWhite } from "./styles";
 
-export function Button({ children }) {
-
+export function Button({ children, red }) {
 	return (
-		
-		<MainButton >{children}</MainButton>
+		<>
+			{red ? (
+				<ButtonRed>{children}</ButtonRed>
+			) : (
+				<ButtonWhite>{children}</ButtonWhite>
+			)}
+		</>
 	);
 }

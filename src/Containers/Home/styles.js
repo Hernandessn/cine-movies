@@ -50,7 +50,11 @@ export const Info = styled.div`
         margin-bottom: 20px;
     }
 `;
-
+export const ContainerButton = styled.div`
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+`;
 
 export const Poster = styled.div`
     z-index: 4;
