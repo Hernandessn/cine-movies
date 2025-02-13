@@ -1,37 +1,40 @@
-import api from '../../services/api';
-import { Background } from './styles';
-import { useEffect, useState } from 'react';
+import api from "../../services/api";
+import { Background, Container, Info, Poster } from "./styles";
+import { useEffect, useState } from "react";
 
-export function Home(){
+export function Home() {
+	const [movie, setMovie] = useState();
 
-    const [movie, setMovie] = useState();
+	useEffect(() => {
+		async function getMovies() {
+			const {
+				data: { results },
+			} = await api.get("/movie/popular");
 
-    // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-    useEffect(()=>{
-        async function getMovies(){
-            const{ 
-                data: { results} 
-            } = await api.get('/movies/popular')
-    
-            setMovie(results[1]);
-            
-        }
-        getMovies()
-    },[])
+			setMovie(results[1]);
+		}
+		getMovies();
+	}, []);
 
-    
-
-
-    return(
-        <>
-        { movie && ( 
-     <Background 
-     img={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}>
-            <h1>{movie.title}</h1>
-            <p>{movie.overview}</p>
-     </Background>
-     )}
-        </>
-    
-    )
-};
+	return (
+		<>
+			{movie && (
+				<Background
+					img={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+				>
+                    <Container>
+					<Info>
+						<h1>{movie.title}</h1>
+						<p>{movie.overview}</p>
+					</Info>
+                    <Poster>
+                        <img 
+                        alt="capa-do-filme" 
+                        src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}/>
+                    </Poster>
+                    </Container>
+				</Background>
+			)}
+		</>
+	);
+}
