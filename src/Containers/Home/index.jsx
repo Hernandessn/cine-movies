@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 export function Home() {
 	const [movie, setMovie] = useState();
 	const [topMovies, setTopMovies] = useState();
-
+	const [topSeries, setTopSeries] = useState();
 	useEffect(() => {
 		async function getMovies() {
 			const {
@@ -17,30 +17,32 @@ export function Home() {
 
 			setMovie(results[1]);
 		}
-	
 
 		async function getTopMovies() {
 			const {
 				data: { results },
 			} = await api.get("/movie/top_rated");
 
-			
-			console.log(results);
-			
 			setTopMovies(results);
 		}
 
+		async function getTopSeries() {
+			const {
+				data: { results },
+			} = await api.get("/tv/top_rated");
+
+			setTopSeries(results);
+		}
 
 		getMovies();
 		getTopMovies();
+		getTopSeries();
 	}, []);
 
 	return (
 		<>
 			{movie && (
-				<Background
-					img={getImages(movie.backdrop_path)}
-				>
+				<Background img={getImages(movie.backdrop_path)}>
 					<Container>
 						<Info>
 							<h1>{movie.title}</h1>
@@ -52,16 +54,14 @@ export function Home() {
 						</Info>
 
 						<Poster>
-							<img
-								alt="capa-do-filme"
-								src={getImages(movie.poster_path)}
-							/>
+							<img alt="capa-do-filme" src={getImages(movie.poster_path)} />
 						</Poster>
 					</Container>
 				</Background>
 			)}
 
-		{topMovies && <Slider info={topMovies} title={'Top Filmes'}/>}
+			{topMovies && <Slider info={topMovies} title={"Top Filmes"} />}
+			{topSeries && <Slider info={topSeries} title={"Top Series"} />}
 		</>
 	);
 }
