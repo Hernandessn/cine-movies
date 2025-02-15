@@ -1,3 +1,4 @@
+import { Card } from "../Card";
 import { Container } from "./styles";
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -19,9 +20,7 @@ export function Slider({ info, title }) {
 			{info.map( (item,index) =>(
 			// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 			<SwiperSlide key={index}>
-				<div 
-				style={{color: 'white'}}>
-					{item.original_title}</div>
+			  <Card item={item}/>
 			</SwiperSlide>
 			))}
 			
