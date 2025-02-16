@@ -5,6 +5,8 @@ import api from "../../services/api";
 import { getImages } from "../../utils/getImages";
 import { Background, Container, ContainerButton, Info, Poster } from "./styles";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 export function Home() {
 	const [showModal, setShowModal] = useState(false);
@@ -13,7 +15,8 @@ export function Home() {
 	const [topSeries, setTopSeries] = useState();
 	const [popularSeries,setPopularSeries] = useState();
 	const [topPeople,setTopPeople] = useState();
-	
+	const navigate = useNavigate();
+
 	useEffect(() => {
 		async function getMovies() {
 			const {
@@ -74,7 +77,7 @@ export function Home() {
 							<h1>{movie.title}</h1>
 							<p>{movie.overview}</p>
 							<ContainerButton>
-								<Button red={true}>Assista Agora</Button>
+								<Button onClick={()=>navigate(`/detalhe/${movie.id}`)} red={true}>Assista Agora</Button>
 								<Button 
 								red={false} 
 								onClick={()=> setShowModal(true)}>
