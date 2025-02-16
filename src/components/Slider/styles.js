@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const Container = styled.button`
    background-color: black;
    padding: 0 20px;
+   overflow: hidden;
 
    h2{
       color: #ffff;

@@ -1,4 +1,5 @@
 import { Button } from "../../components/Button";
+import { Modal } from "../../components/Modal";
 import { Slider } from "../../components/Slider";
 import api from "../../services/api";
 import { getImages } from "../../utils/getImages";
@@ -64,6 +65,7 @@ export function Home() {
 		<>
 			{movie && (
 				<Background img={getImages(movie.backdrop_path)}>
+					<Modal movieId={movie.id}/>
 					<Container>
 						<Info>
 							<h1>{movie.title}</h1>
