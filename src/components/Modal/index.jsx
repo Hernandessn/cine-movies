@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Container, Background, Button } from "./styles";
-import { getMovie } from "../../services/getData";
+import { getMovieVideos } from "../../services/getData";
 
 export function Modal({ movieId,  setShowModal }) {
 	const [movie, setMovie] = useState();
@@ -9,7 +9,7 @@ export function Modal({ movieId,  setShowModal }) {
 // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>		
 	useEffect(()=>{
 	async function getMovies() {
-	setMovie(await getMovie(movieId))
+	setMovie(await getMovieVideos(movieId))
 	}
 	getMovies()
 }, [])
