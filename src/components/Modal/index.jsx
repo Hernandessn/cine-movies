@@ -1,21 +1,17 @@
 import { useEffect, useState } from "react";
-import { Container, Background } from "./styles";
-import api from "../../services/api";
+import { Container, Background, Button } from "./styles";
+import { getMovie } from "../../services/getData";
 
 export function Modal({ movieId,  setShowModal }) {
 	const [movie, setMovie] = useState();
 	
 	
-		// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>		
 	useEffect(()=>{
 	async function getMovies() {
-		const {
-			data: { results },
-		} = await api.get(`/movie/${movieId}/videos`);
-		
-		setMovie(results[0]);
+	setMovie(await getMovie(movieId))
 	}
-	getMovies();
+	getMovies()
 }, [])
 	
 
@@ -23,6 +19,7 @@ export function Modal({ movieId,  setShowModal }) {
 		<Background onClick={()=> setShowModal(false)}>
 			{movie &&(
 		<Container>
+			<Button onClick={()=>setShowModal(false)}> X </Button>
 			<iframe
 			 src={`https://www.youtube.com/embed/${movieId}`}
 			 title="Youtube Video Player"

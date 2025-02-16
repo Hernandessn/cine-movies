@@ -29,4 +29,20 @@ export const Container = styled.div`
 `;
 
 
+export const Button = styled.button`
+border: 3px solid #ffff;
+background: transparent;
+color: #ffff;
+border-radius: 30px;
+padding: 10px 20px;
+cursor: pointer;
+font-size: 20px;
+font-weight: 500;
+position: absolute;
+top: 0;
+right: 50;
+z-index: 9999;
 
+
+
+`
