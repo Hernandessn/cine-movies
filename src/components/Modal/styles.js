@@ -4,8 +4,8 @@ import styled from "styled-components";
 export const Background = styled.div`
     height: 100vh;
     width: 100vw;
-    z-index: 999999;
-    background-color: rgba(0,0,0 0.7);
+    z-index: 999;
+    background-color: rgba(0,0,0,0.7);
     position: absolute;
     display: flex;
     align-items: center;
