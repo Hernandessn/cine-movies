@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Container } from "./styles";
+import { Background, Container, Cover } from "./styles";
+import { getImages } from '../../utils/getImages';
 import {
 	getMovieById,
 	getMovieCredits,
@@ -15,6 +16,7 @@ export function Detail() {
 	const [movieCredits, setMovieCredits] = useState();
 	const [movieSimilar, setMovieSimilar] = useState();
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
 		async function getAllData() {
 			Promise.all([
@@ -35,8 +37,18 @@ export function Detail() {
 		getAllData();
 	}, []);
 	return (
+		<>
+		{movie && (
+			<>
+			<Background image={getImages(movie.backdrop_path)}/>
 		<Container>
+			<Cover>
+				<img src={getImages(movie.poster_path)} alt="" />
+			</Cover>
 			<div>Detail</div>
 		</Container>
+		</>
+	)}
+		</>
 	);
 }
