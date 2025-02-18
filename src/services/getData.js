@@ -47,7 +47,7 @@ export async function getMovieVideos(movieId) {
 }
 
 export async function getMovieCredits(movieId) {
-    const { data} = await api.get(`/movie/${movieId}/cradits`);
+    const { data} = await api.get(`/movie/${movieId}/credits`);
 
     return data;
 }

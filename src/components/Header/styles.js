@@ -10,7 +10,7 @@ export const Container = styled.div`
   align-items: center;
   padding: 10px;
   width: 100%;
-  background-color: ${props => props.changeBackground ? '#000' : 'transparent'};
+  background-color: ${props => props.$changeBackground ? '#000' : 'transparent'};
   transition: background-color 0.5s ease-in-out;
 
   img {

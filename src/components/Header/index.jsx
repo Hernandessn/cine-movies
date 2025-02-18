@@ -17,7 +17,7 @@ export function Header() {
   }, []);
 
   return (
-    <Container changeBackground={changeBackground}>
+    <Container $changeBackground={changeBackground}>
       <img src={Logo} alt="Logo-dev-movies" />
       <Menu>
         <Li $Active={pathname === '/'}>
