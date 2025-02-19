@@ -42,7 +42,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  height: 100%;
+  height: 100vh;
   max-width: 1500px;
   margin-top: -100px;
   background-color: black;
@@ -61,4 +61,27 @@ export const Cover = styled.div`
     box-shadow: rgb(100 100 111 / 20%) 0px 29px 8px;
     animation: ${scale} 0.5s linear;
   }
+`;
+
+export const Info = styled.div`
+    padding: 20px;
+    width: 50%;
+    z-index: 99;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
+
+    h2{
+        font-size: 50px;
+        font-weight: 700;
+        color: #ffffff;
+    }
+
+    p{
+        font-weight: 700;
+        color: #fff;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
 `;

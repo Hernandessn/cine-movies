@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Background, Container, Cover } from "./styles";
+import { Background, Container, Cover,Info } from "./styles";
 import { getImages } from "../../utils/getImages";
 import {
   getMovieById,
@@ -46,7 +46,12 @@ export function Detail() {
             <Cover>
               <img src={getImages(movie.poster_path)} alt="" />
             </Cover>
-            <div>Detail</div>
+            <Info>
+              <h2>{movie.title}</h2>
+              <div>Generos</div>
+              <p>{movie.overview}</p>
+              <div>Créditos</div>
+            </Info>
           </Container>
         </>
       )}
