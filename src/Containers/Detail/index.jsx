@@ -8,6 +8,8 @@ import {
   getMovieSimilar,
   getMovieVideos,
 } from "../../services/getData";
+import { SpanGenres } from "../../components/SpanGenres";
+import { Credits } from "../../components/Credits";
 
 export function Detail() {
   const { id } = useParams();
@@ -48,9 +50,11 @@ export function Detail() {
             </Cover>
             <Info>
               <h2>{movie.title}</h2>
-              <div>Generos</div>
+              <SpanGenres genres={movie.genres}/>
               <p>{movie.overview}</p>
-              <div>Créditos</div>
+              <div>
+                <Credits credits={movieCredits}/>
+              </div>
             </Info>
           </Container>
         </>
