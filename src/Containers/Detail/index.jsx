@@ -18,6 +18,7 @@ export function Detail() {
 	const [movieCredits, setMovieCredits] = useState();
 	const [movieSimilar, setMovieSimilar] = useState();
 
+  
 	useEffect(() => {
 		async function getAllData() {
 			if (!id) return;
@@ -68,6 +69,8 @@ export function Detail() {
 									width="100%"
 								> </iframe>
 							</div>
+              
+              
 						))}
 					</ContainerMovies>
           <Slider info={movieSimilar} title={"Filmes Similares"} />

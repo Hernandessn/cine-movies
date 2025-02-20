@@ -8,6 +8,8 @@ export async function getMovies() {
 	return results[0];
 }
 
+
+
 export async function getTopMovies() {
 	const {
 		data: { results },

@@ -21,7 +21,7 @@ export function Modal({ movieId,  setShowModal }) {
 		<Container>
 			<Button onClick={()=>setShowModal(false)}> X </Button>
 			<iframe
-			 src={`https://www.youtube.com/embed/${movieId}`}
+			 src={`https://www.youtube.com/embed/${movie[0].key}`}
 			 title="Youtube Video Player"
 			 height="500px"
 			 width="100%"
