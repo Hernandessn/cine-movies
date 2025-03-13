@@ -32,7 +32,7 @@ DevMovies é um aplicativo web desenvolvido em **React** que permite explorar fi
 
 2. Acesse a pasta do projeto:
    ```sh
-   cd cinemovies
+   cd cine-movies
    ```
 
 3. Instale as dependências:
