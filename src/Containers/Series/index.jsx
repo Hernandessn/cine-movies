@@ -4,6 +4,7 @@ import { Slider } from "../../components/Slider";
 import {
 	getMovies,
 	getPopularSeries,
+	getSeries,
 	getTopMovies,
 	getTopPeople,
 	getTopSeries,
@@ -15,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 
 export function Series() {
 	const [showModal, setShowModal] = useState(false);
-	const [movie, setMovie] = useState();
+	const [tv, setTv] = useState();
 	const [topSeries, setTopSeries] = useState();
 	const [popularSeries, setPopularSeries] = useState();
 
@@ -26,14 +27,14 @@ export function Series() {
 
 		async function getAllData() {
 			Promise.all([
-				getMovies(),
+				getSeries(),
 				getTopMovies(),
 				getTopSeries(),
 				getPopularSeries(),
 				getTopPeople(),
 			])
-				.then(([movie, topSeries, popularSeries]) => {
-					setMovie(movie);
+				.then(([series, topSeries, popularSeries]) => {
+					setTv(series);
 					setTopSeries(topSeries);
 					setPopularSeries(popularSeries);
 				})
@@ -45,18 +46,18 @@ export function Series() {
 
 	return (
 		<>
-			{movie && (
-				<Background img={getImages(movie.backdrop_path)}>
+			{tv && (
+				<Background img={getImages(tv.backdrop_path)}>
 					{showModal && (
-						<Modal movieId={movie.id} setShowModal={setShowModal} />
+						<Modal movieId={tv.id} setShowModal={setShowModal} />
 					)}
 					<Container>
 						<Info>
-							<h1>{movie.title}</h1>
-							<p>{movie.overview}</p>
+							<h1>{tv.title}</h1>
+							<p>{tv.overview}</p>
 							<ContainerButton>
 								<Button
-									onClick={() => navigate(`/detalhe/${movie.id}`)}
+									onClick={() => navigate(`/detalhe/${tv.id}`)}
 									red={true}
 								>
 									Assista Agora
@@ -68,7 +69,7 @@ export function Series() {
 						</Info>
 
 						<Poster>
-							<img alt="capa-do-filme" src={getImages(movie.poster_path)} />
+							<img alt="capa-do-filme" src={getImages(tv.poster_path)} />
 						</Poster>
 					</Container>
 				</Background>

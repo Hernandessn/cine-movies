@@ -8,6 +8,15 @@ export async function getMovies() {
 	return results[0];
 }
 
+export async function getSeries() {
+	const {
+		data: { results },
+	} = await api.get("/tv/popular");
+
+	return results[1];
+}
+
+
 
 
 export async function getTopMovies() {
